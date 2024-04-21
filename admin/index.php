@@ -81,6 +81,20 @@ require_once('partials/_head.php');
     </div>
   </div>
   <!-- Footer -->
+  <style>
+        html,
+        body {
+            background: url('https://miro.medium.com/v2/resize:fit:1100/format:webp/1*6Jp3vJWe7VFlFHZ9WhSJng.jpeg');
+            background-size: cover;
+            background-color: #fff;
+            font-weight: bold;
+            color: white;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 200;
+            height: 100vh;
+            margin: 0;
+        }
+        </style>
   <?php
   require_once('partials/_footer.php');
   ?>

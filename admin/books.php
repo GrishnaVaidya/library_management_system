@@ -53,10 +53,12 @@ require_once('partials/_head.php');
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">Image</th>
-                    <th scope="col">Book_id</th>
+                    <th scope="col">book_id</th>
                     <th scope="col">Title</th>
                     <th scope="col">Author</th>
+                    <th scope="col">Quantity</th>
                     <th scope="col">Actions</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
@@ -81,11 +83,17 @@ require_once('partials/_head.php');
                       <td><?php echo $prod->book_id; ?></td>
                       <td><?php echo $prod->book_name; ?></td>
                       <td><?php echo $prod->author_name; ?></td>
+                      <td><?php echo $prod->quantity; ?></td>
 
                       
                       
                       
                       <td>
+                      <a href="borrow.php?borrow=<?php echo $prod->book_id; ?>"
+                        >
+                        <button class="btn btn-sm btn-primary">
+                            Borrow
+                          </button>
                         <a href="books.php?delete=<?php echo $prod->book_id; ?>"
                         onclick="return confirm('Are you sure you want to delete this book?')">
                           <button class="btn btn-sm btn-danger">
@@ -100,7 +108,16 @@ require_once('partials/_head.php');
                             <i class="fas fa-edit"></i>
                             Update
                           </button>
+                        
                         </a>
+                        <a href="book_reserve.php?book_id=<?php echo $prod->book_id; ?>"
+   onclick="return confirm('Are you sure you want to reserve this book?')">
+   <button class="btn btn-sm btn-primary">
+       <i class="fas fa-edit"></i>
+       Reserve
+   </button>
+</a>
+
                       </td>
                     </tr>
                   <?php } ?>

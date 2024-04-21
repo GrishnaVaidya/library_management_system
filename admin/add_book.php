@@ -6,7 +6,7 @@ include('config/code-generator.php');
 
 if (isset($_POST['addBook'])) {
   //Prevent Posting Blank Values
-  if (empty($_POST["book_code"]) || empty($_POST["book_name"]) || empty($_POST['book_desc']) || empty($_POST['author_name'])) {
+  if (empty($_POST["book_code"]) || empty($_POST["book_name"]) || empty($_POST['book_desc']) || empty($_POST['author_name']) || empty($_POST['book_quantity']) ){
     $err = "Blank Values Not Accepted";
   } else {
     $book_id = $_POST['book_id'];
@@ -16,12 +16,13 @@ if (isset($_POST['addBook'])) {
     move_uploaded_file($_FILES["book_img"]["tmp_name"], "assets/img/products/" . $_FILES["book_img"]["name"]);
     $book_desc = $_POST['book_desc'];
     $author_name = $_POST['author_name'];
+    $book_quantity = $_POST['book_quantity'];
 	
     //Insert Captured information to a database table
-    $postQuery = "INSERT INTO books (book_id, book_code, book_name, book_img, book_desc, author_name ) VALUES(?,?,?,?,?,?)";
+    $postQuery = "INSERT INTO books (book_id, book_code, book_name, book_img, book_desc, author_name, quantity) VALUES(?,?,?,?,?,?,?)";
     $postStmt = $mysqli->prepare($postQuery);
     //bind paramaters
-    $rc = $postStmt->bind_param('ssssss', $book_id, $book_code, $book_name, $book_img, $book_desc, $author_name);
+    $rc = $postStmt->bind_param('ssssssi', $book_id, $book_code, $book_name, $book_img, $book_desc, $author_name, $book_quantity);
     $postStmt->execute();
     //declare a varible which will be passed to alert function
     if ($postStmt) {
@@ -88,11 +89,19 @@ require_once('partials/_head.php');
                 </div>
                 <hr>
                 <div class="form-row">
+                  <div class="col-md-6">
+                    <label>Book Quantity</label>
+                    <input type="number" name="book_quantity" class="form-control" value="">
+                    </div>
+                 </div>
+                <div class="form-row">
                   <div class="col-md-12">
                     <label>Book Description</label>
                     <textarea rows="5" name="book_desc" class="form-control" value=""></textarea>
                   </div>
                 </div>
+                
+
                 <br>
                 <div class="form-row">
                   <div class="col-md-6">

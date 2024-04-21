@@ -93,18 +93,37 @@ while ($admin_id = $res->fetch_object()) {
             </a>
 
             <li class="nav-item">
-            <a class="nav-link" href="tablebooking.php">
+            <a class="nav-link" href="reservation_record.php">
               <i class="ni ni-credit-card text-primary"></i> Book Reserving
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="User.php">
+              <i class="ni ni-credit-card text-primary"></i> Add Student
             </a>
           </li>
        
         
-        <hr class="my-3">
+          <hr class="my-3">
+        <h6 class="navbar-heading text-muted" >Reporting</h6>
         <ul class="navbar-nav mb-md-3">
           <li class="nav-item">
-            <a class="nav-link" href="logout.php">
-              <i class="fas fa-sign-out-alt text-danger"></i> Log Out
+          <style>
+            .navbar-nav {
+              padding-left: 20px;
+            }
+               </style>
+
+            <a class="nav-link" href="borrow_record.php">
+              <i class="fas fa-shopping-basket"></i> Borrow Record
             </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="payments_reports.php">
+              <i class="fas fa-funnel-dollar"></i> Payments
+            </a>
+          </li>
+        </ul>
           </li>
         </ul>
       </div>
